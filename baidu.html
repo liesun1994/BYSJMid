@@ -1,0 +1,50 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<style type="text/css">  
+html{height:100%}  
+body{height:100%;margin:0px;padding:0px}  
+#container{height:100%}  
+</style> 
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=jMOc35fgMUrOfHhFYgMN9SZ2uZhi8kY2"></script>
+<title>异步加载</title>  
+<!--<script type="text/javascript">  
+function initialize() {  
+  var mp = new BMap.Map('map');  
+  mp.centerAndZoom(new BMap.Point(121.491, 31.233), 11);  
+}  
+   
+function loadScript() {  
+  var script = document.createElement("script");  
+  script.src = "http://api.map.baidu.com/api?v=2.0&ak=jMOc35fgMUrOfHhFYgMN9SZ2uZhi8kY2&callback=initialize";//此为v2.0版本的引用方式  
+  // http://api.map.baidu.com/api?v=1.4&ak=您的密钥&callback=initialize"; //此为v1.4版本及以前版本的引用方式  
+  document.body.appendChild(script);  
+}  
+   
+window.onload = loadScript;  
+</script>  -->
+</head>  
+<body>  
+  <!--<div id="map" style="width:500px;height:320px"></div> -->
+  <div id="container"></div>
+<script type="text/javascript"> 
+		var map = new BMap.Map("container");          // 创建地图实例  
+		var point = new BMap.Point(116.404, 39.915);  // 创建点坐标  
+		map.centerAndZoom(point, 15);
+		var myPushpin = new BMap.PushpinTool(map);         // 创建标注工具实例    
+myPushpin.addEventListener("markend", function(e){  // 监听事件，提示标注点坐标信息   
+ alert("您标注的位置：" +     
+       e.marker.getPoint().lng + ", " +     
+       e.marker.getPoint().lat);    
+});    
+myPushpin.open();   
+		/*var traffic = new BMap.TrafficLayer();        // 创建交通流量图层实例      
+		map.addTileLayer(traffic);*/
+		/*map.addEventListener("click", function(){    
+ 			var center = map.getCenter();    
+ 			alert("地图中心点变更为：" + center.lng + ", " + center.lat);    
+		});*/
+</script> 
+</body>  
+</html>

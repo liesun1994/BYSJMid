@@ -1,0 +1,38 @@
+.logo {
+  padding: 10px 10px 10px 31px !important;
+  /*background: url(../images/logo.png) no-repeat 10px 12px;*/
+  color: #fff !important ;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  text-shadow: 0 1px 0 #4e691f !important;
+}
+.logout {
+    background: url("../img/logout.png") !important;
+}
+.add{
+		background: url("../img/add.png") !important;
+}
+.edit {
+    background: url("../img/edit.png") !important;
+}
+.delete {
+    background: url("../img/delete.png") !important;
+}
+.user_add{
+	 background: url("../img/user_add.png") !important;
+}
+.user_edit{
+	background: url("../img/user_edit.png") !important;
+}
+.user_delete{
+	background: url("../img/user_delete.png") !important;
+}
+.map{
+	background: url("../img/map.png") !important;
+}
+.alloc{
+	background: url("../img/alloc.png") !important;
+}
+.show{
+	background: url("../img/show.png") !important;
+}
