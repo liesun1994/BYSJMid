@@ -44,11 +44,11 @@ Ext.define("BYSJ.view.Emergency.Edit", {
                 { xtype: "textfield", fieldLabel: "报警人", name: "user_realname", readOnly:true},
 				{ xtype: "textfield", fieldLabel: "联系方式", name: "user_tel", readOnly:true },
 				{ xtype: "textfield", fieldLabel: "报警类别", name: "emergency_type", allowBlank: true,readOnly:true },
-				{ xtype: "textfield", fieldLabel: "报警文本", name: "emergency_text", allowBlank: true },
+				{ xtype: "textarea", fieldLabel: "报警文本", name: "emergency_text", height:135,allowBlank: true },
 				{ xtype: "textfield", fieldLabel: "状态", name: "status", allowBlank: false ,readOnly:true},
 				{ xtype: "textfield", fieldLabel: "报警时间", name: "emergency_time", allowBlank: false,readOnly:true },
 				{ xtype: "textfield", fieldLabel: "处理人ID", name: "handler_id", allowBlank: true },
-        		{ xtype: "textfield", fieldLabel: "处理信息", name: "handler_text", allowBlank: true },
+        		{ xtype: "textarea", fieldLabel: "处理信息", name: "handler_text",height:135, allowBlank: true },
         		{ xtype: "textfield", fieldLabel: "处理时间", name: "handler_time", allowBlank: true,readOnly:true  },
         	],
         	dockedItems: [{
