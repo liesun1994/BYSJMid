@@ -14,7 +14,9 @@
 		<div id='allmap' style="width:900px;height:560px"></div>
 		<?php
 			//实现报警具体信息
-			$ne=getEmById(1);
+			$emid=$_GET['emid'];
+			echo $emid;
+			$ne=getEmById($emid);
 			$neinfo=json_decode($ne);
 			//print_r($neinfo);
 			$longitude=$neinfo->data->longitude;
@@ -34,7 +36,7 @@
 		map = new BMap.Map("allmap");
 		var pt1=new BMap.Point(<?php	echo $longitude.','.$latitude;?>);
 		map.centerAndZoom(pt1, 15);
-		var help =new BMap.Icon("http://yuanchuanghui-bysj.stor.sinaapp.com/help.jpg", new BMap.Size(25, 25), {    //小车图片
+		var help =new BMap.Icon("http://wangnima-bysj.stor.sinaapp.com/help2.jpg", new BMap.Size(25, 25), {    //小车图片
    			offset: new BMap.Size(0, -5),    //相当于CSS精灵
     		imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
  	});
@@ -67,7 +69,7 @@
 				title : "信息窗口" , // 信息窗口标题
 				enableMessage:true//设置允许信息窗发送短息
 			   };
-	var myIcon =new BMap.Icon("http://yuanchuanghui-bysj.stor.sinaapp.com/police.jpg", new BMap.Size(20, 35), {    //小车图片
+	var myIcon =new BMap.Icon("http://wangnima-bysj.stor.sinaapp.com/police.jpg", new BMap.Size(20, 35), {    //小车图片
     offset: new BMap.Size(0, -5),    //相当于CSS精灵
     imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
  	});

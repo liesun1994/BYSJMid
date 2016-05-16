@@ -1,12 +1,14 @@
 Ext.Loader.setConfig(
 	{enabled:true}
 );
+global=1;
 Ext.application({
     name: "BYSJ",
     appFolder: 'app',
     controllers: ["MainPanel"],
     autoCreateViewport: true,
     launch: function () {
+    	//alert(global);
         // 页面加载完成之后执行
         var login=Ext.create('Ext.window.Window',{
 					width:320,

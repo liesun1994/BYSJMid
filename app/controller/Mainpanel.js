@@ -17,7 +17,7 @@ Ext.define('BYSJ.controller.MainPanel', {
 	            afterlayout: {
 	                    single: true,
 	                    fn: function (panel) {
-	                        this.application.getController('Emergency').init();
+	                        this.application.getController('Changepassword').init();
 	                    }
 	                }
 	            }

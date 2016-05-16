@@ -4,10 +4,10 @@ Ext.define('BYSJ.controller.Emergency', {
     	"Emergency"
     ],
     stores: [
-        "Emergency"
+        "Emergency","EmergencyInfo"
     ],
     views: [
-        'Emergency.List'
+        'Emergency.List',
     ],
     refs: [
         { ref: "WorkPanel", selector: "#workPanel" },
@@ -28,7 +28,25 @@ Ext.define('BYSJ.controller.Emergency', {
     },
     
     onEmShow:function(){
-    	alert('123');
+    	var me = this,
+        list = Ext.getCmp("workPanel").down("gridpanel"),
+        rs = list.getSelectionModel().getLastSelected();
+        if (rs) {
+        	//alert(global);
+            global=rs.data.emergency_id;
+            //var win = BYSJ.view.Emergency.Edit;
+            var win = Ext.create("BYSJ.view.Emergency.Edit");
+            win.form.getForm().url = "php/Emergency/updateEmergency.php";
+            win.form.load({
+                url: "php/Emergency/getEmergencyInfo.php",
+                params: { emergency_id: rs.data.emergency_id },
+                success: function (form, action) {
+                    this.show();
+                },
+                failure: BYSJ.FormSubmitFailure,
+                scope: win
+            });
+        }
     },
     
     onEmDelete:function(){

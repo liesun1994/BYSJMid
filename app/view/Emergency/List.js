@@ -6,7 +6,9 @@ Ext.define('BYSJ.view.Emergency.List', {
     store: "Emergency",
 	selType: "checkboxmodel",
     selModel: { checkOnly: false, mode: "MULTI" },
-    initComponent: function () {
+   
+   
+   	initComponent: function () {
         var me = this;
         me.tbar = {
             xtype: "pagingtoolbar",

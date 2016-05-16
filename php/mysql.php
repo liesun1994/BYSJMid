@@ -229,11 +229,11 @@ function userLogin($user_name,$user_password){
 /*对emergency数据操作*/
 function getEmById($id){
  	DBOpen();
-	$sql="select e.emergency_id,v.user_realname,v.user_tel,v.location,v.longitude,v.latitude,e.status,e.emergency_time from emergency_info e inner join user_info v on e.victim_id=v.user_id and e.emergency_id=".$id;
+	$sql="select e.emergency_id,e.emergency_type,e.handler_id,e.emergency_text,e.handler_text,e.handler_time,v.user_realname,v.user_tel,v.location,v.longitude,v.latitude,e.status,e.emergency_time from emergency_info e inner join user_info v on e.victim_id=v.user_id and e.emergency_id=".$id;
 	$result=mysql_query($sql);
-	$rs=mysql_fetch_array($result);
 	$array=array();
 	if(mysql_affected_rows()==1){
+		$rs=mysql_fetch_array($result);
 		$array=array(
 			'success'=>true,
 			'total'=>1,
@@ -246,7 +246,12 @@ function getEmById($id){
 				'longitude'=>$rs["longitude"],
 				'latitude'=>$rs["latitude"],
 				'status'=>$rs["status"],
-				'emergency_time'=>$rs["emergency_time"]
+				'emergency_time'=>$rs["emergency_time"],
+				'emergency_type'=>$rs["emergency_type"],
+				'emergency_text'=>$rs["emergency_text"],
+				'handler_id'=>$rs['handler_id'],
+				'handler_text'=>$rs["handler_text"],
+				'handler_time'=>$rs["handler_time"]
 			)
 		);
 	}else{
@@ -356,8 +361,28 @@ function getEmUnhandleList($page,$limit){
 	DBClose();
 }
 
-function addEmergency($token){
-	
+function updateEmergency($emid,$emergency_text,$handler_id,$handler_text){
+	DBOpen();
+	$sql="update emergency_info set emergency_text='".$emergency_text."',handler_id='".$handler_id."',handler_text='".$handler_text."' where emergency_id=".$emid;
+	mysql_query($sql);
+	if(mysql_affected_rows()==1){
+		$array=array(
+			'success'=>true,
+			'total'=>1,
+			'msg'=>'修改信息成功',
+			'data'=>array()
+		);
+		echo json_encode($array);
+	}else{
+		$array=array(
+			'success'=>false,
+			'total'=>0,
+			'msg'=>'修改信息失败',
+			'data'=>array()
+		);
+		echo json_encode($array);
+	}
+	DBClose();
 }
 
 function deleteEmergency($em_id){
